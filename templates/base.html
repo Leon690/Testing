@@ -1,0 +1,21 @@
+<html>
+	<head>
+		{% block head %}
+        	<meta charset="utf-8">
+        	<link rel="stylesheet" href="css/base.css">
+		{% endblock %}    
+    </head>
+
+    <body>
+	    <div id="banner"></div>
+	    <div id="menu">
+			<a href="./index.php">INICIO</a>
+			<a href="./index.php?seccion=noticias">NOTICIAS</a>
+			<a href="./index.php?seccion=enviar">ENVIAR NOTICIAS</a>
+		</div>
+		{% block contenido %}
+		<!-- el bloque contenido de cada pagina...-->
+
+		{% endblock %}
+	</body>
+</html>

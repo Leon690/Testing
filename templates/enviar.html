@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block head %}
+	{{parent()}}
+	<!--ACA PODEMOS AGREGAR .css o .JS especiales para la seccion home en particular-->
+	<link rel="stylesheet" href="css/noticias.css">
+{% endblock %}
+
+
+{% block contenido %}
+    <div>ESTA ES LA SECCION PARA AGREGAR NOTICIAS...</div>
+    
+    <form method="post" action="./index.php?seccion=noticias&amp;agregar=ok">
+    	<input id="titulo" type="text" name="titulo" placeholder="Titulo">
+    	<textarea id="texto" name="texto" placeholder="Texto"></textarea>
+    	<input id="agregar" type="submit" value="AGREGAR">
+    </form>
+{% endblock %}

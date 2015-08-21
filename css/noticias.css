@@ -1,0 +1,34 @@
+.titulo{
+	font-size: 4em;
+}
+
+.fecha{
+	font-size: 1em;
+}
+
+.texto{
+	font-size: 2em;
+}
+
+.eliminar{
+	font-size: 0.7em;
+	color:#CC0000;
+	text-decoration: none;
+}
+
+#titulo{
+	width: 100%;
+	height: 40px;
+	font-size: 2em;
+}
+
+#texto{
+	width: 100%;
+	height: 120px;
+	font-size: 1em;
+}
+
+#agregar{
+	width: 100%;
+	height: 40px;
+}
