@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+		<div id='title'>Sección usuarios</div>
+
+		<div class='button'><a href="./index.php?seccion=agregar_usuario">Agregar Usuario</a></div>
+		{% if users %}
+			<table>
+				<tr>
+					<th>Nick</th>
+					<th>Pass</th>
+				</tr>
+					{% for user in users %}
+						<tr>
+							<td>user.nick</td>
+							<td>user.pass</td>
+							<a href="./index.php?seccion=usuarios&amp;eliminar='user.id'">Eliminar</a>
+						</tr>
+					{% endfor %}
+			</table>
+		{% endif %}
+
+{% endblock %}

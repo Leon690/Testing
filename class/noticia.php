@@ -5,6 +5,7 @@ class Noticia extends Conectar{
 	public $id, $titulo, $texto, $fecha;
 
     public function __construct() {
+
     	$pdo = new Conectar();
 		$this->db = $pdo->db;
     }
@@ -24,7 +25,7 @@ class Noticia extends Conectar{
 	public function agregar($titulo, $texto, $fecha){
 		$sql = "INSERT INTO noticias (titulo, texto, fecha) VALUES (:titulo, :texto, :fecha)";
 		$query = $this->db->prepare( $sql );
-		$query->execute(array('titulo'=>$titulo, ':texto'=>$texto, ':fecha'=>$fecha));		
+		$query->execute(array(':titulo'=>$titulo, ':texto'=>$texto, ':fecha'=>$fecha));		
 		$this->id = $this->db->lastInsertId();
 		$this->titulo = $titulo;
 		$this->texto = $texto;
@@ -38,7 +39,7 @@ class Noticia extends Conectar{
 
 	public function listar(){
 		$noticias = null;
-		$query = $this->db->prepare("SELECT * FROM noticias ORDER by id DESC");		
+		$query = $this->db->prepare("SELECT * FROM noticias ORDER by id DESC");
 		$query->execute(array());
 		foreach ($query->fetchAll() as $row){
 			$noticias[] = $row;

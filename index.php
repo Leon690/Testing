@@ -22,6 +22,13 @@
 		case 'enviar':
 			echo $twig->render('enviar.html', $html);			
 			break;
+		case 'usuarios':
+			include('./usuarios.php');
+			echo $twig->render('usuarios.html.twig',$html);
+			break;
+		case "agregar_usuario":
+			echo $twig->render('agregarUsuario.html.twig',$html);
+			break;
 		default:
 			echo $twig->render('home.html', $html);
 	}

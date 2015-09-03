@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+		<div id='title'>Sección agregar usuarios</div>
+	    <form method="post" action="./usuarios.php">
+	    	<input id="nick" type="text" name="nick" placeholder="NICK">
+	    	<input id="pass" type="password" name="pass" placeholder="PASS"></textarea>
+	    	<input id="agregar" name="submit" type="submit" value="AGREGAR">
+    	</form>
+{% endblock %}
