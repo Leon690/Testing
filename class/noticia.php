@@ -15,6 +15,8 @@ class Noticia extends Conectar{
 		$query->execute(array(':id' => $id));
 		foreach ($query->fetchAll() as $row){
 			$this->id = $row["id"];
+			echo $this->id;
+			die();
 			$this->titulo = $row["titulo"];
 			$this->texto = $row["texto"];
 			$this->fecha = $row["fecha"];

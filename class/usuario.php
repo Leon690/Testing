@@ -9,8 +9,19 @@ class Usuario extends Conectar{
 			$this->db = $pdo->db;
 	}
 
+	public function buscarPorId($id){
+		$query = $this->db->prepare("SELECT * FROM usuarios WHERE id = :id");		
+		$query->execute(array(':id' => $id));
+		foreach ($query->fetchAll() as $row){
+			$this->id = $row["id"];
+			$this->nick = $row["nick"];
+			$this->password = $row["password"];
+		}			
+		return $this;
+	}
+
 	public function agregar($nick, $pass){
-		$query = $this->db->prepare("INSERT INTO usuarios (nick,pass) VALUES (:nick, :pass)");
+		$query = $this->db->prepare("INSERT INTO usuarios (nick,password) VALUES (:nick, :pass)");
 		$query->execute(array( ':nick'=>$nick, ':pass'=>$pass ));
 		$this->id = $this->db->lastInsertId();
 		$this->nick = $nick;
@@ -28,9 +39,7 @@ class Usuario extends Conectar{
 
 	public function eliminar(){
 		$this->db->exec("DELETE FROM usuarios WHERE id='$this->id'");
+		return $this->nick;
 	}
 
-	public function buscarPorID($id){
-		
-	}
 }

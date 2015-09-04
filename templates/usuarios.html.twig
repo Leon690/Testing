@@ -2,22 +2,36 @@
 
 {% block contenido %}
 		<div id='title'>Sección usuarios</div>
+		
+		{% if msg %}
+			<div>{{ msg }}</div>
+		{% endif %}
 
-		<div class='button'><a href="./index.php?seccion=agregar_usuario">Agregar Usuario</a></div>
+		{% if agregar %}
+
+		    <form method="post" action="./index.php?seccion=usuarios&amp;agregar=si">
+		    	<input id="nick" type="text" name="nick" placeholder="Nick" value={{ user.nick }}>
+		    	<input id="pass" type="password" name="pass" placeholder="P4ssw0rd">
+		    	<input id="agregar" name="submit" type="submit" value="AGREGAR">
+	    	</form>
+
+		{% else %}
+			<div class='button'><a href="./index.php?seccion=usuarios&amp;agregar=si">Agregar Usuario</a></div>
+
+		{% endif %}
 		{% if users %}
 			<table>
 				<tr>
 					<th>Nick</th>
-					<th>Pass</th>
+					<th>Password</th>
 				</tr>
 					{% for user in users %}
 						<tr>
-							<td>user.nick</td>
-							<td>user.pass</td>
-							<a href="./index.php?seccion=usuarios&amp;eliminar='user.id'">Eliminar</a>
+							<td> {{ user.nick}} </td>
+							<td> {{ user.password}} </td>
+							<td><a href="./index.php?seccion=usuarios&amp;eliminar={{ user.id }}">Eliminar</a> </td>
 						</tr>
 					{% endfor %}
 			</table>
 		{% endif %}
-
 {% endblock %}
