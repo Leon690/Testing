@@ -14,10 +14,17 @@
 
 
 	$html[] = null;
+	if (isset($_SESSION['login_user']))
+		{
+		$html['logged'] = True;
+		$html['userId'] = $_SESSION['userId'];
+		$html['user'] = $_SESSION['login_user'];
+		$html['role'] = $_SESSION['role'];
+		}
 	switch(isset($_GET["seccion"]) ? $_GET["seccion"] : ''){
 		case 'login':
 			include('./login.php');
-			echo $twig->render('login.html.twig');
+			echo $twig->render('login.html.twig', $html);
 			break;
 		case 'noticias':
 			include('./noticias.php');

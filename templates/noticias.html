@@ -13,9 +13,11 @@
     	<div class="fecha">{{n.fecha|date("d/m/Y")}}</div>
     	<div class="texto">{{n.texto}}</div>
     	<div>
-    		<a href="./index.php?seccion=noticias&amp;eliminar={{n.id}}" class="eliminar">
+            {% if userId == n.userId or role == "admin" %}
+    		<a class="btn btn-danger" href="./index.php?seccion=noticias&amp;eliminar={{n.id}}" class="eliminar">
     			Eliminar
     		</a>
+            {% endif %}
     	</div>
     	<hr>
     {% endfor %}

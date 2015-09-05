@@ -5,9 +5,24 @@
 {% endblock %}
 
 {% block contenido %}
-    <form method="post" action="./index.php?seccion=login" name="Login">
-        <input id="nick" type="text" name="nick" placeholder="Nick" value={{ user.nick }}>
-        <input id="pass" type="password" name="pass" placeholder="P4ssw0rd">
-        <input id="login" name="login" type="submit" value="Login">
-    </form>
+	{% if logged %}
+
+		Bienvenido {{ user }}
+
+	{% else %}
+
+		{% if msg %}
+			<div class="alert alert-warning">
+				{{ msg }}
+			</div>
+		{% endif %}
+		<div class="container">
+	    <form method="post" class="form-signin" action="./index.php?seccion=login" name="Login">
+	    	<h2 class="form-signin-heading">Ingrese su usuario y contraseña</h2>
+	        <input id="nick" type="text" name="nick" placeholder="Nick" value={{ user.nick }}></input>
+	        <input id="pass" type="password" name="pass" placeholder="P4ssw0rd"></input>
+	        <button name="login" class="btn btn-large btn-primary" type="submit">Log in</button>
+	    </form>
+</div>
+	{% endif %}
 {% endblock%}

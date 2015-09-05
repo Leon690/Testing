@@ -22,10 +22,10 @@ class Noticia extends Conectar{
 		return $this;
 	}
 
-	public function agregar($titulo, $texto, $fecha){
-		$sql = "INSERT INTO noticias (titulo, texto, fecha) VALUES (:titulo, :texto, :fecha)";
+	public function agregar($titulo, $texto, $fecha, $userId){
+		$sql = "INSERT INTO noticias (titulo, texto, fecha, userId) VALUES (:titulo, :texto, :fecha, :userId)";
 		$query = $this->db->prepare( $sql );
-		$query->execute(array(':titulo'=>$titulo, ':texto'=>$texto, ':fecha'=>$fecha));		
+		$query->execute(array(':titulo'=>$titulo, ':texto'=>$texto, ':fecha'=>$fecha, ':userId'=>$userId));		
 		$this->id = $this->db->lastInsertId();
 		$this->titulo = $titulo;
 		$this->texto = $texto;

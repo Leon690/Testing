@@ -3,21 +3,47 @@
 		{% block head %}
         	<meta charset="utf-8">
         	<link rel="stylesheet" href="css/base.css">
+        	    <!-- Bootstrap -->
+	 	   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	 
+		    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		    <!--[if lt IE 9]>
+		      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		    <![endif]-->
 		{% endblock %}    
     </head>
 
     <body>
+    	<div class="container">
 	    <div id="banner"></div>
-	    <div id="menu">
-            <a href="./index.php?seccion=login">Login</a>
-			<a href="./index.php">INICIO</a>
-			<a href="./index.php?seccion=noticias">NOTICIAS</a>
-			<a href="./index.php?seccion=enviar">ENVIAR NOTICIAS</a>
-			<a href="./index.php?seccion=usuarios">USUARIOS</a>
+	    <div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				 <li class="active">
+				 	<a href="./index.php?seccion=login">
+		            	{% if logged %} Logout
+		            	{% else %} Login
+		            	{% endif %}
+	            	</a>
+				 </li>
+				 <li class="active"><a href="./index.php">Home</a></li>
+				 <li class="active"><a href="./index.php?seccion=noticias">NOTICIAS</a></li>
+				 <li class="active"><a href="./index.php?seccion=enviar">ENVIAR NOTICIAS</a></li>
+				 <li class="active"><a href="./index.php?seccion=usuarios">USUARIOS</a></li>
+			</ul>
 		</div>
-		{% block contenido %}
-		<!-- el bloque contenido de cada pagina...-->
-		estoy en base
-		{% endblock %}
+			{% block contenido %}
+			<!-- el bloque contenido de cada pagina...-->
+			estoy en base
+			{% endblock %}
+
+			{% block js %}    
+			    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+			    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+			    <!-- Include all compiled plugins (below), or include individual files as needed -->
+			    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+			{% endblock %}
+		</div>
 	</body>
 </html>

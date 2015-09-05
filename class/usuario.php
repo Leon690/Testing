@@ -19,25 +19,21 @@ class Usuario extends Conectar{
 		}			
 		return $this;
 	}
-	public function buscarUsuario($nick,$pass){
-		$query = $this->db->prepare("SELECT nick FROM usuarios WHERE nick = :nick AND password = :pass");
-//http://stackoverflow.com/questions/11575432/having-trouble-executing-a-select-query-in-a-prepared-statement
-		$query->execute(array(':nick'=> $nick, ':pass'=>$pass));
-		$result=($query->fetchAll());
-		var_dump($result);
-
-		$result = count($query->fetchAll());
-		var_dump($result);
-		die();
-
+	public function buscarUsuario($nick){
+		$query = $this->db->prepare("SELECT id, nick, password, rol FROM usuarios WHERE nick = :nick");
+		$query->execute(array(':nick'=> $nick));
+		$result = $query->fetchAll();
+		if (count($result)>0){
+			return $result[0];}
 	}
 
-	public function agregar($nick, $pass){
-		$query = $this->db->prepare("INSERT INTO usuarios (nick,password) VALUES (:nick, :pass)");
-		$query->execute(array( ':nick'=>$nick, ':pass'=>$pass ));
+	public function agregar($nick, $pass, $role){
+		$query = $this->db->prepare("INSERT INTO usuarios (nick,password,rol) VALUES (:nick, :pass, :role)");
+		$query->execute(array( ':nick'=>$nick, ':pass'=>$pass, ':role'=>$role ));
 		$this->id = $this->db->lastInsertId();
 		$this->nick = $nick;
 		$this->pass = $pass;
+		$this->role = $role;
 		return $this;
 	}
 

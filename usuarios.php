@@ -8,11 +8,19 @@ if (isset($_GET["agregar"])){
 if(isset($_POST["submit"])){
 	$nick=$_POST["nick"];
 	$pass=$_POST["pass"];
-    $html["user"]= ["nick"=>$nick,"pass"=>$pass ];
+    $role=$_POST["role"];
+    $options = [
+    'cost' => 10,
+    'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
+    ];
     
-	   (new Usuario)->agregar($nick,$pass);
-       $html["user"] = NULL;
-    }
+    $pass=password_hash($pass, PASSWORD_BCRYPT, $options);
+
+    //$html["user"]= ["nick"=>$nick,"pass"=>$pass,"role"=>$role ];
+    
+	(new Usuario)->agregar($nick,$pass,$role);
+    $html["user"] = NULL;
+}
 
 
 elseif (isset($_GET["eliminar"])){

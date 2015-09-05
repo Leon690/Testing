@@ -3,7 +3,7 @@ body{
 }
 
 #banner{
-	width: 100%;
+	width: 20%;
 	height: 200px;
 	background-image: url('../img/banner.jpg');
 	background-repeat: no-repeat;
@@ -14,3 +14,6 @@ body{
 #banner:hover{
 	opacity: 1;
 }
+
+
+
