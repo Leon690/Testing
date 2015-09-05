@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block contenido %}
+    <form method="post" action="./index.php?seccion=login" name="Login">
+        <input id="nick" type="text" name="nick" placeholder="Nick" value={{ user.nick }}>
+        <input id="pass" type="password" name="pass" placeholder="P4ssw0rd">
+        <input id="login" name="login" type="submit" value="Login">
+    </form>
+{% endblock%}

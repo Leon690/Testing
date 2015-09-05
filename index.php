@@ -15,6 +15,10 @@
 
 	$html[] = null;
 	switch(isset($_GET["seccion"]) ? $_GET["seccion"] : ''){
+		case 'login':
+			include('./login.php');
+			echo $twig->render('login.html.twig');
+			break;
 		case 'noticias':
 			include('./noticias.php');
 			echo $twig->render('noticias.html', $html);			

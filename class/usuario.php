@@ -19,6 +19,18 @@ class Usuario extends Conectar{
 		}			
 		return $this;
 	}
+	public function buscarUsuario($nick,$pass){
+		$query = $this->db->prepare("SELECT nick FROM usuarios WHERE nick = :nick AND password = :pass");
+//http://stackoverflow.com/questions/11575432/having-trouble-executing-a-select-query-in-a-prepared-statement
+		$query->execute(array(':nick'=> $nick, ':pass'=>$pass));
+		$result=($query->fetchAll());
+		var_dump($result);
+
+		$result = count($query->fetchAll());
+		var_dump($result);
+		die();
+
+	}
 
 	public function agregar($nick, $pass){
 		$query = $this->db->prepare("INSERT INTO usuarios (nick,password) VALUES (:nick, :pass)");
