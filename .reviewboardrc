@@ -1,0 +1,4 @@
+REVIEWBOARD_URL = "http://reviewsmyserver.ddns.net"
+REPOSITORY = "noticias"
+BRANCH = "master"
+LAND_DEST_BRANCH = "master"
