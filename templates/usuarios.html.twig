@@ -28,6 +28,7 @@
 					<tr>
 						<th>Nick</th>
 						<th>Rol</th>
+						<th>Password</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -35,6 +36,7 @@
 						<tr>
 							<td> {{ user.nick}} </td>
 							<td> {{ user.rol }} </td>
+							<td> {{ user.password }} </td>
 							<td><a class="btn btn-warning" href="./index.php?seccion=usuarios&amp;eliminar={{ user.id }}">Eliminar</a> </td>
 						</tr>
 					{% endfor %}

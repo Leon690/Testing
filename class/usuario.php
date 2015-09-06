@@ -2,7 +2,7 @@
 include_once('./class/conectar.php');
 
 class Usuario extends Conectar{
-	protected $nick, $pass;
+	protected $id, $nick, $pass;
 
 	public function __construct(){
 			$pdo = new Conectar();
