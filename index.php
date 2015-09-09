@@ -14,7 +14,7 @@
 
 
 	$html[] = null;
-	if (isset($_SESSION['login_user']))
+	if (isset($_SESSION['login_user'])or(isset($_SESSION['login_admin'])))
 		{
 		$html['logged'] = True;
 		$html['userId'] = $_SESSION['userId'];
@@ -36,6 +36,10 @@
 		case 'usuarios':
 			include('./usuarios.php');
 			echo $twig->render('usuarios.html.twig',$html);
+			break;
+		case 'admin':
+			include('./loginadmin.php');
+			echo $twig->render('admin.html', $html);
 			break;
 		default:
 			echo $twig->render('home.html', $html);

@@ -28,6 +28,7 @@ class Usuario extends Conectar{
 	}
 
 	public function agregar($nick, $pass, $role){
+		if (!isset($_SESSION['login_user'])){
 		$query = $this->db->prepare("INSERT INTO usuarios (nick,password,rol) VALUES (:nick, :pass, :role)");
 		$query->execute(array( ':nick'=>$nick, ':pass'=>$pass, ':role'=>$role ));
 		$this->id = $this->db->lastInsertId();
@@ -35,6 +36,7 @@ class Usuario extends Conectar{
 		$this->pass = $pass;
 		$this->role = $role;
 		return $this;
+		}
 	}
 
 	public function listar(){
@@ -46,8 +48,10 @@ class Usuario extends Conectar{
 	}
 
 	public function eliminar(){
+		if (isset($_SESSION['login_user'])){
 		$this->db->exec("DELETE FROM usuarios WHERE id='$this->id'");
 		return $this->nick;
+		}
 	}
 
 }

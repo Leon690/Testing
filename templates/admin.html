@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block contenido %}
+	{% if logged %}
+
+		<h2>WELCOME {{ user }} !! TO YOUR DESTRUCTION...</h2>
+
+	{% else %}
+
+		{% if msg %}
+			<div class="alert alert-warning">
+				{{ msg }}
+			</div>
+		{% endif %}
+		<div class="container">
+	    <form method="post" class="form-signin" action="./index.php?seccion=admin" name="Admin">
+	    	<h2 class="form-signin-heading">ENTER YOUR USER AND PASSWORD</h2>
+	        <input id="nick" type="text" name="nick" placeholder="USER" value={{ user.nick }}></input>
+	        <input id="pass" type="password" name="pass" placeholder="PASSWORD"></input>
+	        <button name="login" class="btn btn-large btn-primary" type="submit">Log in</button>
+	    </form>
+	   	{% if agregar %}
+	   		{% if logged %}
+		    <form method="post" action="./index.php?seccion=admin&amp;agregaradmin=si">
+		    	<input id="nick" type="text" name="nick" placeholder="USER" >
+		    	<input id="pass" type="password" name="pass" placeholder="PASSWORD">
+		    	<input id="role" type="text" name="role" placeholder="ADMIN NAME" >
+		    	<input id="agregar" name="submit" type="submit" value="CREATE">
+	    	</form>
+	    	{% endif %}
+		{% else %}
+			{% if logged %}
+			<div class="btn pull-right"><a href="./index.php?seccion=admin&amp;agregar=si"><h2>CREATE AN ACCOUNT</h2></a></div>
+			{% endif %}
+		{% endif %}
+</div>
+	{% endif %}
+{% endblock%}
