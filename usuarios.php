@@ -26,7 +26,7 @@ if(isset($_POST["submit"])){
 elseif (isset($_GET["eliminar"])){
     $user = (new Usuario)->buscarPorId($_GET["eliminar"])->eliminar();
     //$nick = $user->eliminar();
-    $html["msg"] = "El usuario '$user' ha sido eliminado."; 
+    $html["msg"] = "The User '$user' has been deleted."; 
 }
 
 $html["users"]=(new Usuario)->listar();

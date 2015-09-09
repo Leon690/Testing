@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block contenido %}
-		<div id='title'><h1>Sección usuarios</h1></div>
+		<div id='title'><h1>USERS</h1></div>
 		
 		{% if msg %}
 			<div class="alert alert-warning">
@@ -12,23 +12,22 @@
 		{% if agregar %}
 
 		    <form method="post" action="./index.php?seccion=usuarios&amp;agregar=si">
-		    	<input id="nick" type="text" name="nick" placeholder="Nick" >
-		    	<input id="pass" type="password" name="pass" placeholder="P4ssw0rd">
-		    	<input id="role" type="text" name="role" placeholder="rol" >
-		    	<input id="agregar" name="submit" type="submit" value="AGREGAR">
+		    	<input id="nick" type="text" name="nick" placeholder="USER" >
+		    	<input id="pass" type="password" name="pass" placeholder="PASSWORD">
+		    	<input id="role" type="text" name="role" placeholder="CHARACTER NAME" >
+		    	<input id="agregar" name="submit" type="submit" value="CREATE">
 	    	</form>
 
 		{% else %}
-			<div class="btn pull-right"'><a href="./index.php?seccion=usuarios&amp;agregar=si">Agregar Usuario</a></div>
+			<div class="btn pull-right"'><a href="./index.php?seccion=usuarios&amp;agregar=si"><h2>CREATE AN ACCOUNT</h2></a></div>
 
 		{% endif %}
 		{% if users %}
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Nick</th>
-						<th>Rol</th>
-						<th>Password</th>
+						<th>USER</th>
+						<th>CHARACTER</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -36,8 +35,9 @@
 						<tr>
 							<td> {{ user.nick}} </td>
 							<td> {{ user.rol }} </td>
-							<td> {{ user.password }} </td>
-							<td><a class="btn btn-warning" href="./index.php?seccion=usuarios&amp;eliminar={{ user.id }}">Eliminar</a> </td>
+							{% if logged %}
+								<td><a class="btn btn-warning" href="./index.php?seccion=usuarios&amp;eliminar={{ user.id }}">DESTROY</a></td>
+							{% endif %}
 						</tr>
 					{% endfor %}
 				</tbody>

@@ -1,7 +1,7 @@
-#Ejemplo de PHP Orientado a Objetos
+#EXAMPLE OF PHP OBJECT ORIENTED
 
-#Respetando MVC
+#RESPECTING MVC
 
-#Evitando Inyecciones SQL
+#AVOIDING SQL INJECTIONS
 
-#Se usa PDO y Twig
+#WE USE PDO and Twig

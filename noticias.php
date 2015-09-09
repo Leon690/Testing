@@ -13,7 +13,7 @@
 		}
 		else{
 			
-			$html["error"] = "Debe estar logueado para realizar esa accion.";
+			$html["error"] = "YOU MUST BE REGISTERED TO ELIMINATE.";
 		}
 
 		$html["noticias"] = (new Noticia)->listar();

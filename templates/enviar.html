@@ -8,15 +8,15 @@
 
 
 {% block contenido %}
-    <div>ESTA ES LA SECCION PARA AGREGAR NOTICIAS...</div>
+    <h2>SEND YOUR COMMENTS HERE</h2>
     
     {% if logged %}
 	    <form method="post" action="./index.php?seccion=noticias&amp;agregar=ok">
-	    	<input id="titulo" type="text" name="titulo" placeholder="Titulo">
-	    	<textarea id="texto" name="texto" placeholder="Texto"></textarea>
-	    	<input id="agregar" type="submit" value="AGREGAR">
+	    	<input id="titulo" type="text" name="titulo" placeholder="TITLE">
+	    	<textarea id="texto" name="texto" placeholder="YOUR COMMENT"></textarea>
+	    	<input id="agregar" type="submit" value="SEND">
 	    </form>
 	{% else %}
-		<div>Debe loguearse para publicar una noticia</div>
+		<div>YOU NEED BE LOGGED FOR SEND COMMENTS</div>
 	{% endif %}
 {% endblock %}

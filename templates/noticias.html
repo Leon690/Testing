@@ -14,15 +14,15 @@
         </div>
     {% endif %}
 
-    <div>ESTA ES LA SECCION NOTICIAS... MOSTRAMOS NOTICIAS...</div>
+    <div class="comments">THE COMMENTS OF PLAYERS ARE IN THIS SECTION</div>
     {% for n in noticias %}
     	<div class="titulo">{{n.titulo}}</div>
     	<div class="fecha">{{n.fecha|date("d/m/Y")}}</div>
     	<div class="texto">{{n.texto}}</div>
     	<div>
-            {% if userId == n.userId or role == "admin" %}
+            {% if logged %}
     		<a class="btn btn-danger" href="./index.php?seccion=noticias&amp;eliminar={{n.id}}" class="eliminar">
-    			Eliminar
+    			ANNIHILATE
     		</a>
             {% endif %}
     	</div>

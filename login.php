@@ -20,7 +20,7 @@
 
         }
         else{
-        	$html["msg"]="Usuario o contraseña invalidos";
+        	$html["msg"]="INVALID USER OR PASSWORD";
         	}
 	}
 
