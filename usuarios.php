@@ -3,23 +3,15 @@ include_once('./class/usuario.php');
 $html["msg"] = "";
 if (isset($_GET["agregar"])){
     $html["agregar"]=True;
-
 }
+(new Usuario)->buscarUsuario($_POST['nick']);
 if(isset($_POST["submit"])){
-	$nick=$_POST["nick"];
-	$pass=$_POST["pass"];
-    $role=$_POST["role"];
-    $options = [
-    'cost' => 10,
-    'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
-    ];
-    
-    $pass=password_hash($pass, PASSWORD_BCRYPT, $options);
+    if ((new Usuario)->buscarUsuario($_POST['nick'])->id == NULL){
+    	   (new Usuario)->agregar($_POST['nick'],md5($_POST['pass']),$_POST['role']);
+    }else{
+        $html['error']= "el usuario ya existe";
 
-    //$html["user"]= ["nick"=>$nick,"pass"=>$pass,"role"=>$role ];
-    
-	(new Usuario)->agregar($nick,$pass,$role);
-    $html["user"] = NULL;
+        }
 }
 
 

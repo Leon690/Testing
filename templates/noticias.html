@@ -20,7 +20,7 @@
     	<div class="fecha">{{n.fecha|date("d/m/Y")}}</div>
     	<div class="texto">{{n.texto}}</div>
     	<div>
-            {% if logged %}
+            {% if admin %}
     		<a class="btn btn-danger" href="./index.php?seccion=noticias&amp;eliminar={{n.id}}" class="eliminar">
     			ANNIHILATE
     		</a>

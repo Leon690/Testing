@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block contenido %}
-	{% if logged %}
+	{% if admin %}
 
-		<h2>WELCOME {{ user }} !! TO YOUR DESTRUCTION...</h2>
+		<h2>WELCOME {{ admin.nick }} !! TO YOUR DESTRUCTION...</h2>
 
 	{% else %}
 
@@ -19,7 +19,7 @@
 		<div class="container">
 	    <form method="post" class="form-signin" action="./index.php?seccion=login" name="Login">
 	    	<h2 class="form-signin-heading">ENTER YOUR USER AND PASSWORD</h2>
-	        <input id="nick" type="text" name="nick" placeholder="USER" value={{ user.nick }}></input>
+	        <input id="nick" type="text" name="nick" placeholder="USER" value={{ admin.nick }}></input>
 	        <input id="pass" type="password" name="pass" placeholder="PASSWORD"></input>
 	        <button name="login" class="btn btn-large btn-primary" type="submit">Log in</button>
 	    </form>

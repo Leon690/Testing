@@ -14,13 +14,9 @@
 
 
 	$html[] = null;
-	if (isset($_SESSION['login_user'])or(isset($_SESSION['login_admin'])))
-		{
-		$html['logged'] = True;
-		$html['userId'] = $_SESSION['userId'];
-		$html['user'] = $_SESSION['login_user'];
-		$html['role'] = $_SESSION['role'];
-		}
+	if (isset($_SESSION['admin'])){
+		$html['admin'] = $_SESSION['admin'];
+	}
 	switch(isset($_GET["seccion"]) ? $_GET["seccion"] : ''){
 		case 'login':
 			include('./login.php');
@@ -36,10 +32,6 @@
 		case 'usuarios':
 			include('./usuarios.php');
 			echo $twig->render('usuarios.html.twig',$html);
-			break;
-		case 'admin':
-			include('./loginadmin.php');
-			echo $twig->render('admin.html', $html);
 			break;
 		default:
 			echo $twig->render('home.html', $html);

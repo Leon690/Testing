@@ -1,7 +1,7 @@
-<?php
+|<?php
 	include_once('./class/noticia.php');
 
-		if (isset($_SESSION['login_user'])){
+		if (isset($_SESSION['admin'])){
 
 			if (isset($_GET["agregar"])){
 				(new Noticia)->agregar($_POST["titulo"], $_POST["texto"], time(), $_SESSION['userId']);

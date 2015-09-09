@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block contenido %}
+		{{parent()}}
 		<div id='title'><h1>USERS</h1></div>
 		
 		{% if msg %}
@@ -11,17 +12,15 @@
 
 		{% if agregar %}
 
-			{% if not logged %}
 		    <form method="post" action="./index.php?seccion=usuarios&amp;agregar=si">
 		    	<input id="nick" type="text" name="nick" placeholder="USER" >
 		    	<input id="pass" type="password" name="pass" placeholder="PASSWORD">
 		    	<input id="role" type="text" name="role" placeholder="CHARACTER NAME" >
 		    	<input id="agregar" name="submit" type="submit" value="CREATE">
 	    	</form>
-	    	{% endif %}
 
 		{% else %}
-			{% if not logged %}
+			{% if not admin %}
 			<div class="btn pull-right"'><a href="./index.php?seccion=usuarios&amp;agregar=si"><h2>CREATE AN ACCOUNT</h2></a></div>
 			{% endif %}
 		{% endif %}
@@ -38,7 +37,7 @@
 						<tr>
 							<td> {{ user.nick}} </td>
 							<td> {{ user.rol }} </td>
-							{% if logged %}
+							{% if admin %}
 								<td><a class="btn btn-warning" href="./index.php?seccion=usuarios&amp;eliminar={{ user.id }}">DESTROY</a></td>
 							{% endif %}
 						</tr>

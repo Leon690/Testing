@@ -2,7 +2,7 @@
 include_once('./class/conectar.php');
 
 class Usuario extends Conectar{
-	protected $id, $nick, $pass;
+	public $id, $nick, $pass, $role;
 
 	public function __construct(){
 			$pdo = new Conectar();
@@ -15,28 +15,30 @@ class Usuario extends Conectar{
 		foreach ($query->fetchAll() as $row){
 			$this->id = $row["id"];
 			$this->nick = $row["nick"];
-			$this->password = $row["password"];
+			$this->password = $row["pass"];
 		}			
 		return $this;
 	}
 	public function buscarUsuario($nick){
-		$query = $this->db->prepare("SELECT id, nick, password, rol FROM usuarios WHERE nick = :nick");
+		$query = $this->db->prepare("SELECT * FROM usuarios WHERE nick = :nick");
 		$query->execute(array(':nick'=> $nick));
-		$result = $query->fetchAll();
-		if (count($result)>0){
-			return $result[0];}
+		foreach ($query->fetchAll() as $row){
+			$this->id = $row["id"];
+			$this->nick = $row["nick"];
+			$this->pass = $row["pass"];
+			$this->role = $row['role'];
+		}	
+		return $this;
 	}
 
 	public function agregar($nick, $pass, $role){
-		if (!isset($_SESSION['login_user'])){
-		$query = $this->db->prepare("INSERT INTO usuarios (nick,password,rol) VALUES (:nick, :pass, :role)");
+		$query = $this->db->prepare("INSERT INTO usuarios (nick,pass,role) VALUES (:nick, :pass, :role)");
 		$query->execute(array( ':nick'=>$nick, ':pass'=>$pass, ':role'=>$role ));
 		$this->id = $this->db->lastInsertId();
 		$this->nick = $nick;
 		$this->pass = $pass;
 		$this->role = $role;
 		return $this;
-		}
 	}
 
 	public function listar(){
@@ -48,10 +50,8 @@ class Usuario extends Conectar{
 	}
 
 	public function eliminar(){
-		if (isset($_SESSION['login_user'])){
 		$this->db->exec("DELETE FROM usuarios WHERE id='$this->id'");
 		return $this->nick;
-		}
 	}
 
 }

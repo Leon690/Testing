@@ -1,33 +1,17 @@
 <?php
     include_once('./class/usuario.php');
 
-    if (isset($_SESSION['login_user'])){
-        session_unset();
-        session_destroy();
-        $html['logged']=False;
+    if (isset($_SESSION['admin'])){
+        $_SESSION['admin'] = NULL;
+        $html['admin'] = NULL;
     }
     if (isset($_POST["login"])){
-        $nick=$_POST["nick"];
-        $pass=$_POST["pass"];
-        $user = (new Usuario)->buscarUsuario($nick);
-        if (password_verify($pass, $user['password'])){
-            $_SESSION['userId']=$user['id'];
-            $_SESSION['role']=$user['rol'];
-        	$_SESSION['login_user']= $nick;
-        	$html['user']=$nick;
-            $html['logged']=True;
-
-
-        }
-        else{
+        $admin = (new Usuario)->buscarUsuario($_POST['nick']);
+                    var_dump($admin);
+        if ($admin != NULL AND md5($_POST['pass']) == $admin->pass){
+            $_SESSION['admin'] = $admin->id;
+            $html['admin']=$admin;
+        }else{
         	$html["msg"]="INVALID USER OR PASSWORD";
-        	}
+        }
 	}
-
-	function validarPassword($pass){
-		if (password_verify($pass, $result['password'])) 
-    		echo 'Password is valid!';
-    	else
-    		echo 'pass not valid';
-	}
-
