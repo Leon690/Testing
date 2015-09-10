@@ -2,7 +2,7 @@
 	session_start();
 	ini_set('display_errors', true);
 	error_reporting(E_ALL);
-	
+
 	require_once './vendor/autoload.php';
 	Twig_Autoloader::register();
 	
@@ -31,7 +31,11 @@
 			break;
 		case 'usuarios':
 			include('./usuarios.php');
-			echo $twig->render('usuarios.html.twig',$html);
+			echo $twig->render('usuarios.html.twig', $html);
+			break;
+		case 'register':
+			include('./register.php');
+			echo $twig->render('register.html', $html);
 			break;
 		default:
 			echo $twig->render('home.html', $html);

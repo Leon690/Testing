@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+		{{parent()}}
+		<div id='title'><h1>REGISTER</h1></div>
+		
+		{% if msg %}
+			<div class="alert alert-warning">
+				{{ msg }}
+			</div>
+		{% endif %}
+
+		{% if agregar %}
+
+		    <form method="post" action="./index.php?seccion=register&amp;agregar=si">
+		    	<input id="nick" type="text" name="nick" placeholder="USER" >
+		    	<input id="pass" type="password" name="pass" placeholder="PASSWORD">
+		    	<input id="role" type="text" name="role" placeholder="CHARACTER NAME" >
+		    	<input id="agregar" name="submit" type="submit" value="CREATE">
+	    	</form>
+
+		{% else %}
+			{% if not admin %}
+			<div class="btn pull-right"><a href="./index.php?seccion=register&amp;agregar=si"><h2>CREATE AN ACCOUNT</h2></a></div>
+			{% endif %}
+		{% endif %}
+
+{% endblock %}

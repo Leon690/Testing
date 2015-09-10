@@ -14,18 +14,20 @@
         </div>
     {% endif %}
 
-    <div class="comments">THE COMMENTS OF PLAYERS ARE IN THIS SECTION</div>
-    {% for n in noticias %}
-    	<div class="titulo">{{n.titulo}}</div>
-    	<div class="fecha">{{n.fecha|date("d/m/Y")}}</div>
-    	<div class="texto">{{n.texto}}</div>
-    	<div>
-            {% if admin %}
-    		<a class="btn btn-danger" href="./index.php?seccion=noticias&amp;eliminar={{n.id}}" class="eliminar">
-    			ANNIHILATE
-    		</a>
-            {% endif %}
+    <div class="comments">THE COMMENTS ARE IN THIS SECTION</div>
+    {% if admin %}
+        {% for n in noticias %}
+        	<div class="titulo">{{n.titulo}}</div>
+        	<div class="fecha">{{n.fecha|date("d/m/Y")}}</div>
+        	<div class="texto">{{n.texto}}</div>
+        	<div>
+
+        		<a class="btn btn-danger" href="./index.php?seccion=noticias&amp;eliminar={{n.id}}" class="eliminar">
+        			ANNIHILATE
+        		</a>
+
     	</div>
     	<hr>
-    {% endfor %}
+        {% endfor %}
+    {% endif %}
 {% endblock %}

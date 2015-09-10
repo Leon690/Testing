@@ -31,8 +31,10 @@
 				 <li class="active"><a href="./index.php?seccion=noticias">COMMENTS</a></li>
 				 {% if admin %}
 				 <li class="active"><a href="./index.php?seccion=enviar">SEND COMMENTS</a></li>
+				 <li class="active"><a href="./index.php?seccion=usuarios">USERS</a></li>
+				 {% else %}
+				 <li class="active"><a href="./index.php?seccion=register">REGISTER</a></li>
 				 {% endif %}
-				 <li class="active"><a href="./index.php?seccion=usuarios">REGISTER & USERS</a></li>
 			</ul>
 		</div>
 			{% block contenido %}

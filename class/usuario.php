@@ -1,6 +1,6 @@
 <?php
 include_once('./class/conectar.php');
-
+ 
 class Usuario extends Conectar{
 	public $id, $nick, $pass, $role;
 
@@ -26,7 +26,7 @@ class Usuario extends Conectar{
 			$this->id = $row["id"];
 			$this->nick = $row["nick"];
 			$this->pass = $row["pass"];
-			$this->role = $row['role'];
+			$this->role = $row["role"];
 		}	
 		return $this;
 	}
@@ -39,6 +39,7 @@ class Usuario extends Conectar{
 		$this->pass = $pass;
 		$this->role = $role;
 		return $this;
+		return $this->nick;
 	}
 
 	public function listar(){
