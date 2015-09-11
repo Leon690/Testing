@@ -1,5 +1,6 @@
-|<?php
+<?php
     include_once('./class/noticia.php');
+    include_once('./class/usuario.php');
 
     if (isset($_SESSION['admin'])){
 
@@ -8,7 +9,9 @@
         }
 
         if (isset($_GET["eliminar"])){
-            (new Noticia)->buscarPorId($_GET["eliminar"])->eliminar();
+            if((new Usuario)->buscarPorId($_SESSION['admin'])->role == true){
+                (new Noticia)->buscarPorId($_GET["eliminar"])->eliminar();
+            }
         }
     }
     else{

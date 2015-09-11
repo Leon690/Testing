@@ -7,7 +7,7 @@ if (isset($_GET["agregar"])){
 
 if(isset($_POST["submit"])){
     if ((new Usuario)->buscarUsuario($_POST['nick'])->id == NULL){
-        (new Usuario)->agregar($_POST['nick'],md5($_POST['pass']),$_POST['role']);
+        (new Usuario)->agregar($_POST['nick'],md5($_POST['pass']),false);
         $html["msg"] = "The User has been created.";
     }else{
         $html['error']= "THIS NAME IS ALREADY IN USE";

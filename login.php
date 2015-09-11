@@ -9,7 +9,7 @@
         $admin = (new Usuario)->buscarUsuario($_POST['nick']);
         if ($admin != NULL AND md5($_POST['pass']) == $admin->pass){
             $_SESSION['admin'] = $admin->id;
-            $html['admin']=$admin;
+            $html['admin'] = $admin;
         }else{
         	$html["msg"]="INVALID USER OR PASSWORD";
         }

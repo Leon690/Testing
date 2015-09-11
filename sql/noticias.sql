@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.12deb2
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 05-09-2015 a las 05:34:52
--- Versión del servidor: 5.6.25-0ubuntu0.15.04.1
--- Versión de PHP: 5.6.4-4ubuntu6.2
+-- Host: localhost
+-- Generation Time: Sep 10, 2015 at 01:58 PM
+-- Server version: 5.5.44-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,66 +17,34 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `noticias`
+-- Database: `noticias`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `noticias`
+-- Table structure for table `noticias`
 --
 
 CREATE TABLE IF NOT EXISTS `noticias` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(50) NOT NULL,
-  `texto` varchar(200) NOT NULL,
+  `texto` text NOT NULL,
   `fecha` text NOT NULL,
-  `userId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuarios`
---
-
-CREATE TABLE IF NOT EXISTS `usuarios` (
-`id` int(11) NOT NULL,
-  `nick` varchar(20) NOT NULL,
-  `password` varchar(60) NOT NULL,
-  `rol` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+  `userId` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
--- Índices para tablas volcadas
+-- Dumping data for table `noticias`
 --
 
---
--- Indices de la tabla `noticias`
---
-ALTER TABLE `noticias`
- ADD PRIMARY KEY (`id`);
+INSERT INTO `noticias` (`id`, `titulo`, `texto`, `fecha`, `userId`) VALUES
+(15, '222', '22', '1441891946', 46),
+(16, 'asdasd', 'asdasdas', '1441893272', 46),
+(18, 'NUMBER', 'number numbernumber numbernumber numbernumber numbernumber numbernumber numbernumber numbernumber numbernumber numbernumber numbernumber numbernumber numbernumber numbernumber numbernumber numbernumbe', '1441893343', 46),
+(19, 'LOREM IPSUM', ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. In finibus, mi a sollicitudin sagittis, lectus massa mattis diam, a semper erat dui vulputate urna. In at libero facilisis, bibendum sapien eu', '1441893419', 46);
 
---
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
- ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `noticias`
---
-ALTER TABLE `noticias`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

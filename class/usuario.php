@@ -16,6 +16,7 @@ class Usuario extends Conectar{
 			$this->id = $row["id"];
 			$this->nick = $row["nick"];
 			$this->password = $row["pass"];
+			$this->role = $row["role"];
 		}			
 		return $this;
 	}

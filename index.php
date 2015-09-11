@@ -12,10 +12,10 @@
 	    'cache' => false,
 	));
 
-
+	include_once('./class/usuario.php');
 	$html[] = null;
 	if (isset($_SESSION['admin'])){
-		$html['admin'] = $_SESSION['admin'];
+		$html['admin'] = (new Usuario)->buscarPorId($_SESSION['admin']);
 	}
 	switch(isset($_GET["seccion"]) ? $_GET["seccion"] : ''){
 		case 'login':

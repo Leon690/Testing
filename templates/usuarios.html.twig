@@ -15,13 +15,12 @@
 		    <form method="post" action="./index.php?seccion=usuarios&amp;agregar=si">
 		    	<input id="nick" type="text" name="nick" placeholder="USER" >
 		    	<input id="pass" type="password" name="pass" placeholder="PASSWORD">
-		    	<input id="role" type="text" name="role" placeholder="CHARACTER NAME" >
 		    	<input id="agregar" name="submit" type="submit" value="CREATE">
 	    	</form>
 
 		{% else %}
 			{% if not admin %}
-			<div class="btn pull-right"'><a href="./index.php?seccion=usuarios&amp;agregar=si"><h2>CREATE AN ACCOUNT</h2></a></div>
+				<div class="btn pull-right"'><a href="./index.php?seccion=usuarios&amp;agregar=si"><h2>CREATE AN ACCOUNT</h2></a></div>
 			{% endif %}
 		{% endif %}
 		{% if admin %}
@@ -29,18 +28,21 @@
 				<thead>
 					<tr>
 						<th>USER</th>
-						<th>CHARACTER</th>
+						{% if admin.role %}
+							<th>ACTIONS</th>
+						{% endif %}
 					</tr>
 				</thead>
 				<tbody>
-					{% for admin in users %}
-						<tr>
-							<td> {{ admin.nick}} </td>
-							<td> {{ admin.role }} </td>
-
-								<td><a class="btn btn-warning" href="./index.php?seccion=usuarios&amp;eliminar={{ admin.id }}">DESTROY</a></td>
-
-						</tr>
+					{% for u in users %}
+						{% if not u.role %}
+							<tr>
+								<td>{{u.nick}}</td>
+								{% if admin.role %}
+									<td><a class="btn btn-warning" href="./index.php?seccion=usuarios&amp;eliminar={{ u.id }}">DESTROY</a></td>
+								{% endif %}
+							</tr>
+						{% endif %}
 					{% endfor %}
 				</tbody>
 			</table>
